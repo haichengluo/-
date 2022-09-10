@@ -1,0 +1,41 @@
+#include<bits/stdc++.h>
+#include<windows.h>
+using namespace std;
+int main() {
+	string name;
+	system("title 日记本by-lhc");
+	system("cls");
+	ifstream din("dizhi.qwq");
+	string dizhi;
+	din>>dizhi;
+	if(dizhi.size()==0) {
+		cout<<"欢迎您第一次使用日记本\n请问您要将日记保存到哪个目录(无需在最后加上\\):";
+//		fclose(stdin);
+		cin>>dizhi;
+		string dd=dizhi;
+		if(dd[dd.size()-1]!='\\')
+			dizhi+='\\',dd+="\\";
+		ofstream dout("dizhi.qwq");
+		dout<<dd;
+		string zz;
+		zz="md "+dizhi;
+		system(zz.c_str());
+	}
+	cout<<"文件名:";
+	cin>>name;
+	cout<<"文件类型:";
+	string lei;
+	cin>>lei;
+	if(name.find('.'+lei)==string::npos)
+		name+='.'+lei;
+	name=dizhi+name;
+	freopen(name.c_str(),"w",stdout);
+	string str;
+	while(cin>>str) {
+		cout<<str;
+		cout<<endl;
+		if(lei.find('md')!=string::npos) {
+			cout<<endl;
+		}
+	}
+}
